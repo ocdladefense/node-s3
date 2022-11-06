@@ -14,7 +14,10 @@
     "webpack": "^5.53.0"
   },
   "dependencies": {
-    "@ocdladefense/view": "~2.0.0"
+    "@ocdladefense/view": "~2.0.0",
+    "@aws-sdk/client-cognito-identity": "^3.171.0",
+    "@aws-sdk/client-s3": "^3.171.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.171.0"
   },
   "type": "module"
 }
