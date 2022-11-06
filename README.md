@@ -1,14 +1,7 @@
-# Node Template
-Example module for working with JavaScript in NodeJS.  The module has a default build process that uses babel for transpilation, especially virtual nodes.
+# node-s3
+JavaScript library for navigating S3 objects in a folder/file hierarchy.
 
 
 # Change Log
-
-
-## 1.0.1
+## 1.0.0
 Expose "npm run build" command to transpile JSX to JavaScript.
-
-
-
-## version 1.0.0
-Original version.
