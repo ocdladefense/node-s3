@@ -1,8 +1,7 @@
 /** @jsx vNode */
 
-const { vNode, View } = require('@ocdladefense/view/view.js');
-
 // Load the required clients and packages
+const { vNode, View } = require('@ocdladefense/view');
 const { CognitoIdentityClient } = require("@aws-sdk/client-cognito-identity");
 const { fromCognitoIdentityPool } = require("@aws-sdk/credential-provider-cognito-identity");
 const { S3Client, ListObjectsCommand } = require("@aws-sdk/client-s3");
@@ -30,12 +29,6 @@ function createClient(region, identityPoolId) {
 
 
 
-
-
-// A utility function to create HTML.
-function getHtml(template) {
-  return template.join("\n");
-}
 
 
 /**
@@ -168,17 +161,9 @@ const File = function(props) {
 
 
 
-
-
-// Make the getHTML function available to the browser
-window.getHTML = getHtml;
-
-// List the photo albums that exist in the bucket
-// Make the viewAlbum function available to the browser
+window.createClient = createClient;
 window.ls = ls;
 
-// Make the viewAlbum function available to the browser
-window.listFiles = listFiles;
 
 
 
