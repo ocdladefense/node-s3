@@ -53773,8 +53773,8 @@ const {
  *  https://webpack.js.org/configuration/mode/
  * 
  */
-
-const ls = async function (prefix) {
+async function ls(prefix) {
+  let file, folders, message;
   let config = {
     Delimiter: "/",
     Bucket: this.bucket
@@ -53783,8 +53783,8 @@ const ls = async function (prefix) {
     config.Prefix = prefix;
   }
   const data = await this.client.send(new ListObjectsCommand(config));
-  console.log(data);
-  let files = data.Contents || [];
+  files = data.Contents || [];
+  folders = data.CommonPrefixes || [];
   files = files.filter(file => {
     return file.Key.indexOf("Thumbs.db") === -1;
   });
@@ -53796,20 +53796,18 @@ const ls = async function (prefix) {
     obj.Url = bucketUrl + encodeURIComponent(fileKey);
     return obj;
   });
-  console.log(files);
-  let folders = data.CommonPrefixes || [];
   folders = folders.map(folder => {
     folder.Name = decodeURIComponent(folder.Prefix.replace(prefix, ""));
     return folder;
   });
-  console.log(folders);
-  const message = folders.length ? "Click a folder to view its contents." : "No folders found.";
+  message = folders.length ? "Click a folder to view its contents." : "No folders found.";
   return {
     folders,
     files,
     message
   };
-};
+}
+;
 function S3Desktop(config) {
   this.client = null;
   this.region = config.region;
